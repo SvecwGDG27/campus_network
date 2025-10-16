@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Network</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .header nav ul li {
+            display: inline;
+        }
+
+        .header nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .header nav ul li a:hover {
+            color: white;
+            background-color: #016064;
+            border-color: #016064;
+        }
+
+        .header .logo {
+            height: 50px;
+            cursor: pointer;
+        }
+
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 80vh;
+            background-color: #d8e5d1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main .image-container img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            animation: slideInImage 1s ease-out forwards;
+        }
+
+        .main .content {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            animation: slideInText 1.5s ease-out forwards;
+        }
+
+        @keyframes slideInImage {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInText {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .role-dropdown {
+            position: relative;
+            margin-right: 60px;
+        }
+
+        .role-button {
+            background: #016064;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .role-button:hover {
+            background: #016064;
+        }
+
+        .role-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .role-options > div {
+            position: relative;
+        }
+
+        .role-options button {
+            display: block;
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .role-options button:hover {
+            background: #f0f0f0;
+        }
+
+        .sub-options {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .role-options > div:hover .sub-options {
+            display: block;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px;
+            background-color: #f4f4f4;
+        }
+
+        .video-grid iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: #232f3e;
+            color: white;
+            padding: 20px 40px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .footer .footer-columns {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+        }
+
+        .footer .footer-column h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #f3f3f3;
+        }
+
+        .footer .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer .footer-column ul li a {
+            text-decoration: none;
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        .footer .footer-column ul li a:hover {
+            color: #4caf50;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            color: #ddd;
+            font-size: 12px;
+        }
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Campus Network</div>
+        <nav>
+            <ul>
+                <li><a href="placement-calendar.php">Placement Calendar</a></li>
+                <li><a href="interview-questions.php">Interview Questions</a></li>
+                <li><a href="mock-interview.php">Daily practise</a></li>
+                <li><a href="faq.php">FAQ</a></li>
+                <li><a href="feedback.php">Feedback</a></li>
+            </ul>
+        </nav>
+        <div class="role-dropdown">
+            <button class="role-button" onclick="toggleRoleOptions()">Select Role</button>
+            <div class="role-options" id="roleOptions">
+                <div>
+                    <button>User</button>
+                    <div class="sub-options">
+                        <button onclick="window.location.href='login.php'">Login</button>
+                        <button onclick="window.location.href='register.php'">Register</button>
+                    </div>
+                </div>
+                <div>
+                    <button>Admin</button>
+                    <div class="sub-options">
+                        <button onclick="window.location.href='adminlogin.php'">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="image-container">
+            <img src="background image.jpg" alt="Campus Network">
+        </div>
+        <div class="content">
+            <h1>Welcome to Campus Network!</h1>
+            <p>Navigate through the links to explore various features of our platform.</p>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-columns">
+            <div class="footer-column">
+                <h3>Get to Know Us</h3>
+                <ul>
+                    <li><a href="#">About Campus Network</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Let Us Help You</h3>
+                <ul>
+                    <li><a href="#">Your Account</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Campus Network. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleRoleOptions() {
+            const roleOptions = document.getElementById('roleOptions');
+            if (roleOptions.style.display === 'block') {
+                roleOptions.style.display = 'none';
+            } else {
+                roleOptions.style.display = 'block';
+            }
+        }
+
+        window.addEventListener('click', function(event) {
+            const roleDropdown = document.querySelector('.role-dropdown');
+            if (!roleDropdown.contains(event.target)) {
+                document.getElementById('roleOptions').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

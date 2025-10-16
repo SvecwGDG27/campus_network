@@ -1,0 +1,139 @@
+body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h1 {
+    font-size: 2.2em;
+    margin: 0;
+}
+
+.question-box {
+    width: calc(100% - 20px);
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.questions {
+    margin-top: 20px;
+}
+
+.question {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.question:last-child {
+    border-bottom: none;
+}
+
+.text {
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.answer-button {
+    padding: 8px 15px;
+    font-size: 0.95em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.answer-button:hover {
+    background-color: #0056b3;
+}
+
+.answer-section {
+    display: none;
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid #007bff;
+}
+
+.answer-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.answer-list li {
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.answer-form {
+    margin-top: 10px;
+}
+
+.answer-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.answer-form button {
+    padding: 8px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.answer-form button:hover {
+    background-color: #218838;
+}
